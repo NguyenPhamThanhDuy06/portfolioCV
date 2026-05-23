@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nguyễn Phạm Thành Duy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Nhúng thêm Font chữ viết tay nghệ thuật mềm mại giống hình -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Thêm cuộn mượt mà khi chuyển trang */
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            background-color: #EFEBE7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Định dạng chung cho mỗi trang (section) */
+        section {
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            height: 100%;
+            min-height: 650px;
+            position: relative;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+/* ==========================================
+   TRANG 1: TÁCH BIỆT INTRO (1 LẦN) & LOOP (VÔ TẬN)
+   ========================================== */
+#hero-page {
+    background-color: #EFEBE7;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-text-container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+/* ==========================================
+   1. TIÊU ĐỀ KHỔNG LỒ: NGHIÊNG & ĐỔ BÓNG 3D XUYÊN SUỐT
+   ========================================== */
+.main-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(10rem, 21vw, 20rem);
+    line-height: 0.85;
+    color: #531D27;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    cursor: default;
+    
+    /* ĐỊNH DẠNG GỐC: Nghiêng sẵn -7deg ngay từ đầu */
+    transform: skewX(-7deg);
+    
+    /* BÓNG ĐỔ ĐỨNG YÊN: Giữ nguyên khối 3D sắc nét từ đầu đến cuối */
+    text-shadow: 
+        1px 1px 0px #3A121A,
+        2px 2px 0px #3A121A,
+        3px 3px 0px #3A121A,
+        4px 4px 0px #3A121A,
+        5px 5px 0px #3A121A,
+        6px 6px 0px #3A121A,
+        7px 7px 0px #3A121A,
+        8px 8px 15px rgba(0, 0, 0, 0.35),
+        15px 15px 30px rgba(83, 29, 39, 0.2);
+    
+    /* Hiệu ứng xuất hiện lúc load trang */
+    animation: titleReveal 1.2s cubic-bezier(0.25, 1, 0.2, 1) forwards;
+               
+    /* Kiểm soát chuyển động xoay nghiêng mượt mà, không bị giật khựng */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.2, 1);
+}
+
+/* KHI RÊ CHUỘT VÀO: CHỮ NGHIÊNG HƠN & KHÔNG ĐỔ THÊM BÓNG */
+.main-title:hover {
+    /* Phóng to nhẹ 1.02 và ĐÈ NGHIÊNG SÂU XUỐNG -12deg cực gắt, bóng đổ vẫn giữ nguyên */
+    transform: scale(1.02) skewX(-12deg); 
+}
+/* ==========================================
+   2. HỘP THÔNG TIN ĐỨNG YÊN CỐ ĐỊNH
+   ========================================== */
+.info-card-box {
+    display: inline-block;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 10%;
+    border: 2px solid #531D27;
+    border-radius: 24px;
+    padding: 20px 35px;
+    background-color: rgba(83, 29, 39, 0.03);
+    position: relative;
+    overflow: hidden;
+    z-index: 5;
+    pointer-events: auto;
+
+    animation: cardAppear 1s cubic-bezier(0.25, 1, 0.2, 1) forwards 0.3s;
+    
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 1, 0.2, 1),
+                background-color 0.3s ease;
+}
+
+.info-card-box:hover {
+    background-color: rgba(83, 29, 39, 0.07);
+    transform: translateY(-6px) scale(1.01); 
+    box-shadow: 0 12px 25px rgba(83, 29, 39, 0.15); 
+}
+
+/* TIA SÁNG QUÉT QUA BẢNG (2.5 Giây / Lần) */
+.info-card-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: autoGlowSweep 2.5s ease-in-out infinite;
+    animation-delay: 1.5s; 
+}
+
+.author-name { color: #531D27; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
+.sub-text { font-size: clamp(1rem, 1.8vw, 1.4rem); margin-bottom: 8px; opacity: 0.8; }
+.main-name { font-size: clamp(1.4rem, 3vw, 2.6rem); font-weight: 500; }
+
+/* ==========================================
+   3. ẢNH CHÂN DUNG & HIỆU ỨNG QUÉT SÁNG TOÀN DIỆN
+   ========================================== */
+.image-container {
+    position: absolute;
+    bottom: 0;
+    right: 0%;
+    width: 60%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* THÊM MỚI: Tạo lớp mặt nạ quét sáng phủ lên trên ảnh chân dung */
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    /* Dải sáng trắng mờ ảo quét nhẹ xuyên qua người tạo cảm giác cao cấp */
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    z-index: 3;
+    
+    /* Quét định kỳ mỗi 3.5 giây độc lập với bảng thông tin cho nhịp điệu mượt mà */
+    animation: autoGlowSweep 3.5s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.image-container img {
+    height: 110%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom center;
+    position: relative;
+    z-index: 2;
+    
+    animation: imageFadeIn 1.5s cubic-bezier(0.25, 1, 0.2, 1) forwards,
+               imageSoftBreath 6s ease-in-out infinite alternate 1.5s;
+}
+
+/* ==========================================
+   CÁC KHỐI KEYFRAMES THUẬT TOÁN
+   ========================================== */
+
+/* Trượt xuất hiện và giữ nguyên góc nghiêng gốc */
+@keyframes titleReveal {
+    0% { opacity: 0; transform: scale(0.95) skewX(-7deg); letter-spacing: -8px; }
+    100% { opacity: 1; transform: scale(1) skewX(-7deg); letter-spacing: -1px; }
+}
+
+@keyframes cardAppear {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes imageFadeIn {
+    0% { opacity: 0; transform: translateY(60px) scale(1.3); }
+    100% { opacity: 1; transform: translateY(0) scale(1.3); }
+}
+
+/* Thuật toán quét sáng dùng chung cho cả Bảng và Ảnh */
+@keyframes autoGlowSweep {
+    0% { left: -150%; }
+    35%, 100% { left: 150%; }
+}
+
+@keyframes imageSoftBreath {
+    0% { transform: scale(1.3) translateY(0); }
+    100% { transform: scale(1.315) translateY(-2px); }
+}
+/* ==========================================
+   TRANG 2: ĐẢO NGƯỢC MÀU (NỀN ĐỎ ĐÔ - CHỮ DA KEM)
+   ========================================== */
+#intro-page {
+    background-color: #531D27;
+}
+
+.intro-text-box {
+    width: 100%;
+    max-width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 0px;
+    padding-left: 2%;
+}
+
+.intro-description {
+    font-size: clamp(1.25rem, 1.3vw, 1.1rem);
+    padding-left: 5%;
+    color: #EFEBE7;
+    opacity: 0.95;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* KHÔI PHỤC KHUNG GỐC VÀ TỰ ĐỘNG CHẠY HIỆU ỨNG NHẸ NHÀNG */
+.intro-column {
+    width: 50%;
+    
+    /* Hiệu ứng tự động xuất hiện từ từ khi load trang, không sợ mất chữ */
+    animation: gentleFadeIn 1s cubic-bezier(0.25, 1, 0.2, 1) both;
+}
+
+/* Cột chữ thứ 2 xuất hiện trễ hơn một chút cho có nhịp điệu */
+.intro-text-box .intro-column:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+/* KHỐI CHỨA 1 HÌNH ẢNH CĂN CHUẨN LỀ CHỮ */
+.intro-images-container {
+    width: 100%;
+    max-width: 70%;
+    padding-left: 4%;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    
+    /* Ảnh tự động xuất hiện sau chữ */
+    animation: gentleFadeIn 1s cubic-bezier(0.25, 1, 0.2, 1) both;
+    animation-delay: 0.45s;
+}
+
+.intro-img-box {
+    width: 100%;
+    aspect-ratio: 30 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.intro-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.bottom-title-box {
+    width: 100%;
+    text-align: center;
+}
+
+.section-title {
+    margin-left : 30px !important;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(6rem, 16vw, 17.5rem);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    display: inline-block;
+    
+    /* Gradient: Trắng - Màu nền - Trắng */
+    background: linear-gradient(90deg, 
+        #FFFFFF 0%,    
+        #531D27 50%,   
+        #FFFFFF 100%   
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    
+    /* Tăng thời gian chạy lên 20s cho cực chậm */
+    animation: gentleFadeIn 1.2s cubic-bezier(0.25, 1, 0.2, 1) both, 
+               sweepAndPause 19s linear infinite;
+    animation-delay: 0.65s, 1s;
+}
+
+@keyframes sweepAndPause {
+    /* Nghỉ ở đầu: 0% đến 37% (7s) */
+    0%, 37% { 
+        background-position: 0% 50%; 
+    }
+    
+    /* Quẹt từ đầu sang cuối: 37% đến 63% (5s) */
+    63% { 
+        background-position: 100% 50%; 
+    }
+    
+    /* Nghỉ ở cuối: 63% đến 81% (3s) */
+    81% { 
+        background-position: 100% 50%; 
+    }
+    
+    /* Quẹt ngược về đầu: 81% đến 100% (còn lại) */
+    100% { 
+        background-position: 0% 50%; 
+    }
+}
+
+/* Giữ nguyên Animation cũ của Duy */
+@keyframes gentleFadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+        /* ==========================================
+           TRANG 3: TRANG KINH NGHIỆM (NỀN KEM - CHỮ ĐỎ ĐÔ)
+           ========================================== */
+        #experience-page {
+            background-color: #EFEBE7;
+            padding: 80px 0; /* Sửa lỗi padding -10px để tránh lỗi hiển thị */
+            overflow: hidden;
+        }
+
+        #experience-page .container.exp-container {
+            height: auto;
+            justify-content: flex-start;
+            gap: 50px;
+        }
+
+        .exp-section-title {
+            
+            margin-top: 50px;
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(10rem, 21vw, 20rem);
+            line-height: 0.85;
+            color: #531D27;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            width: 110%;
+            text-align: center;
+            background: linear-gradient(90deg, 
+        #531D27 0%,    
+        #EFEBE7 50%,   
+        #531D27 100%   
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Tăng thời gian chạy lên 20s cho cực chậm */
+    animation: gentleFadeIn 1.2s cubic-bezier(0.25, 1, 0.2, 1) both, 
+               sweepAndPause1 19s linear infinite;
+    animation-delay: 0.65s, 1s;
+}
+
+@keyframes sweepAndPause1 {
+    /* Nghỉ ở đầu: Chữ tối, vệt sáng nằm hoàn toàn bên trái */
+    0%, 37% { 
+        background-position: 100% 50%; 
+    }
+    
+    /* Quẹt từ trái sang phải: Vệt sáng di chuyển về phía cuối */
+    63% { 
+        background-position: 0% 50%; 
+    }
+    
+    /* Nghỉ ở cuối: Giữ vệt sáng bên phải */
+    81% { 
+        background-position: 0% 50%; 
+    }
+    
+    /* Quẹt ngược về trái: Vệt sáng quay lại vị trí bắt đầu */
+    100% { 
+        background-position: 100% 50%; 
+    }
+}
+
+/* Giữ nguyên Animation cũ của Duy */
+@keyframes gentleFadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+            
+        
+
+        /* Thân trục Timeline */
+        .timeline-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 3100px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Đường line dọc chính giữa trục */
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            bottom: 0;
+            width: 3px;
+            background-color: #531D27;
+            transform: translateX(-50%);
+        }
+
+        /* Từng block hàng trên Timeline */
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            margin-bottom: 60px;
+            display: flex;
+        }
+
+        /* Căn lề từng khối theo hàng */
+        .timeline-item.right-item {
+            justify-content: flex-end;
+        }
+
+        .timeline-item.left-item {
+            justify-content: flex-start;
+        }
+
+        /* ==========================================
+           HIỆU ỨNG TỪ DƯỚI LÊN TRÊN (SCROLL REVEAL UPDATE)
+           ========================================= */
+        .timeline-item {
+            opacity: 0;
+            /* Mặc định giấu nhẹ xuống dưới 30px */
+            transform: translateY(40px); 
+            transition: opacity 0.5s cubic-bezier(0.25, 1, 0.2, 1), 
+                        transform 0.5s cubic-bezier(0.25, 1, 0.2, 1);
+        }
+
+        /* Khi cuộn chuột tới: Khẽ trồi lên vị trí gốc và hiện rõ */
+        .timeline-item.active-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Khung chứa thông tin + hình ảnh */
+        .timeline-content {
+            width: 45%;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            
+            /* ĐỔI MÀU Ô NỔI BẬT: Chuyển sang màu trắng tinh khôi lịch lãm */
+            background-color: #ffffff;
+            border: 1px solid rgba(83, 29, 39, 0.15);
+            padding: 25px;
+            border-radius: 16px;
+            
+            position: relative;
+            overflow: hidden; /* Giữ vệt sáng không tràn ra ngoài */
+            
+            /* Tốc độ phản hồi khi hover mượt mà */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.2, 1), 
+                        box-shadow 0.4s cubic-bezier(0.25, 1, 0.2, 1), 
+                        border-color 0.4s ease,
+                        background-color 0.4s ease;
+animation: floatBounce 3s ease-in-out infinite;
+}
+
+/* Thiết lập delay lần lượt cho 4 hộp */
+.timeline-content:nth-child(1) { animation-delay: 0.0s; }
+.timeline-content:nth-child(2) { animation-delay: 0.3s; }
+.timeline-content:nth-child(3) { animation-delay: 0.6s; }
+.timeline-content:nth-child(4) { animation-delay: 0.9s; }
+
+    
+@keyframes floatBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+        /* HOVER EFFECT: Phóng to nhẹ, đổ bóng sâu màu đỏ mờ, viền đỏ đô sắc nét */
+        .timeline-content:hover {
+            
+    animation-play-state: paused;
+    /* Giữ nguyên các hiệu ứng transform/box-shadow khi hover của bạn */
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+            transform: scale(1.03); 
+            border-color: #531D27; 
+            background-color: #fffbf9; /* Đổi nhẹ sang tone kem hồng cực mịn */
+            box-shadow: 0 20px 40px rgba(83, 29, 39, 0.12); 
+        }
+
+        /* EFFECT: Quét sáng (Shine Effect) chạy xéo qua hộp khi hover */
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-25deg);
+            pointer-events: none;
+        }
+
+        .timeline-content:hover::after {
+            animation: shineSweep 0.8s ease-in-out;
+        }
+
+        @keyframes shineSweep {
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Định dạng đảo lề ảnh/chữ cho khối bên trái để tránh rối mắt */
+        .timeline-item.left-item .timeline-content {
+            flex-direction: row-reverse; 
+        }
+
+        /* Phần chữ mô tả kinh nghiệm */
+        .exp-text {
+            flex: 1;
+        }
+
+        .exp-role {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #531D27;
+            margin-bottom: 5px;
+        }
+
+        .exp-company {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #531D27;
+            opacity: 0.8;
+            margin-bottom: 12px;
+        }
+
+        .exp-company p {
+            display: inline-block;
+        }
+
+        .exp-details {
+            list-style-type: disc;
+            padding-left: 18px;
+            color: #531D27;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .exp-details li {
+            margin-bottom: 6px;
+        }
+
+        /* Phần khung hình vuông/chữ nhật đi kèm bên cạnh */
+        .exp-image {
+            width: 300px;
+            height: 300px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        /* Hình ảnh khẽ phóng nhẹ đồng điệu cùng khung to */
+        .timeline-content:hover .exp-image img {
+            transform: scale(1.04);
+        }
+
+        .exp-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.2, 1);
+        }
+
+        /* Dấu chấm tròn định vị trên thanh trục giữa */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            width: 16px;
+            height: 16px;
+            background-color: #531D27;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Chấm tròn bừng sáng đổi màu ăn rơ nhịp hover */
+        .timeline-item:hover .timeline-dot {
+            background-color: #ff4757;
+            transform: translateX(-50%) scale(1.3);
+        }
+
+        /* Khối bao ngoài chứa các badge nằm ngang */
+        .exp-skills-badges {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        /* Định dạng từng ô nhỏ theo hình mẫu */
+        .skill-badge {
+            color: #531D27;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: clamp(0.8rem, 1vw, 1.05rem);
+            white-space: normal;
+            line-height: 1.4;
+            border: 2px solid #531D27;
+            padding: 14px 28px;
+            border-radius: 10px; 
+            background-color: transparent;
+            text-align: center;
+            flex: 1;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.2, 1);
+        }
+
+        /* Đảo màu badge khi rê chuột vào */
+        .skill-badge:hover {
+            background-color: #531D27;
+            color: #EFEBE7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(83, 29, 39, 0.15);
+        }
+
+        /* Tối ưu mượt mà khi xem trên giao diện điện thoại (Mobile) */
+    
+        
+    /* ==========================================
+           TRANG 4: TRANG DỰ ÁN (PROJECT PAGE)
+           ========================================== */
+        #project-page {
+            background-color: #EFEBE7;
+            padding-top: -10px !important;   /* Đổi từ 60px thành 0 để sát lên trên */
+            padding-bottom: 60px;
+        }
+
+        .container.proj-container {
+            height: auto;
+            min-height: 100%;
+            justify-content: flex-start;
+            gap: 25px;
+        }
+
+        /* Khung màu đỏ đô kéo dài tràn ngang toàn màn hình */
+.proj-banner-full {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-color: #531D27; /* Màu đỏ đô chủ đạo */
+    padding: 20px 0; /* Khoảng cách đệm trên dưới của khung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/* Chữ PROJECT màu kem nằm bên trong khung */
+.proj-section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(5rem, 15vw, 14rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+    
+    /* Màu nền chữ (màu kem) */
+    color: #EFEBE7;
+    
+    /* Hiệu ứng phát sáng (Glow) */
+    /* Lớp 1: Sáng nhẹ gần chữ, Lớp 2: Tỏa rộng ra xa */
+    text-shadow: 
+        0 0 10px rgba(239, 235, 231, 0.5), 
+        0 0 20px rgba(239, 235, 231, 0.3),
+        0 0 40px rgba(83, 29, 39, 0.4); /* Thêm chút ánh đỏ đô để tạo độ sâu */
+animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 10px rgba(239, 235, 231, 0.5), 0 0 20px rgba(239, 235, 231, 0.3); }
+    to { text-shadow: 0 0 20px rgba(239, 235, 231, 0.8), 0 0 40px rgba(239, 235, 231, 0.6); }
+}
+.proj-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #531D27;
+    
+    /* DÙNG ĐOẠN ĐỔI MỚI DƯỚI ĐÂY ĐỂ ÉP XÍCH VÔ */
+    width: calc(100% - 120px) !important; /* Trừ đi 120px để mỗi bên tự thụt vào 60px */
+    margin: 0 auto !important;            /* Ép căn giữa lại thanh chữ */
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+        .proj-brand-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .proj-brand-label {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 700;
+        }
+
+        .proj-brand-sub {
+            font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .proj-role-meta {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 700;
+        }
+
+        /* Bố cục chính giữa trang */
+        .proj-main-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 15px;
+        }
+
+        /* Cột điện thoại bên trái */
+        .proj-mockup-col {
+            width: 35%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Thiết kế khung điện thoại mô phỏng */
+/* Khung điện thoại mô phỏng (iPhone Mockup) */
+/* ==========================================
+   MÔ PHỎNG IPHONE 16 NỀN XÁM - POST NẰM GIỮA
+   ========================================== */
+
+/* Thân máy iPhone 16 (Tỉ lệ màn hình dài hơn, viền mỏng) */
+/* ==========================================
+   MÔ PHỎNG IPHONE 16 - HÌNH TRÀN RA NGOÀI
+   ========================================== */
+
+/* Thân máy iPhone 16 */
+.iphone-16-mockup {
+    width: 260px;
+    height: 540px;
+    background: #1e1e1e; /* Màu khung viền Titan */
+    border-radius: 46px;
+    padding: 10px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Màn hình hiển thị bên trong màu xám */
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    background-color: #8E8E93; /* Nền xám Apple */
+    border-radius: 38px;
+    border: 1px solid #2c2c2e;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 22px;
+    background-color: #000000;
+    border-radius: 20px;
+    z-index: 20;
+}
+
+/* KHỐI HÌNH INSTAGRAM TRÀN RA KHỎI ĐIỆN THOẠI */
+.instagram-post-overflow {
+    width: 300px; /* Độ rộng hình vuông bài đăng */
+    height: 400px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.2); /* Tạo đổ bóng mạnh đè lên thân máy */
+    overflow: hidden;
+    
+    /* Tọa độ ép tràn lề */
+    position: absolute;
+    left: -20px;         /* Đẩy nhẹ sang trái để tràn viền đúng tỉ lệ */
+    top: 10%;  /* Định vị nằm ở nửa trên của thân máy */
+    z-index: 30; /* Đảm bảo nổi lên trên cùng, đè qua cả viền máy đen */
+    
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+animation: vibrateNotification 0.6s ease-in-out infinite;
+    animation-delay: 2s; /* Đợi 2s sau khi load trang mới bắt đầu rung */
+    
+    /* Quan trọng: Đảm bảo không làm hỏng transition hover */
+    transition: transform 0.3s ease;
+}
+@keyframes vibrateNotification {
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(-3deg); }
+    30% { transform: rotate(3deg); }
+    45% { transform: rotate(-2deg); }
+    60% { transform: rotate(2deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.instagram-post-overflow img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Hiệu ứng tương tác mượt mà khi di chuột vào tấm hình */
+.instagram-post-overflow:hover {
+    /* Dừng rung */
+    animation-play-state: paused;
+    
+    /* Phóng to và đưa nó về góc 0 độ để không bị lệch */
+    transform: scale(1.05) rotate(0deg); 
+    
+    /* Thêm shadow để tạo độ nổi bật khi dừng lại */
+    box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- NÚT BẤM VẬT LÝ ---------- */
+.iphone-btn {
+    position: absolute;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    z-index: 5; /* Nằm dưới tấm hình tràn lề */
+}
+.action-btn { left: -3px; top: 110px; width: 3px; height: 20px; }
+.volume-up { left: -3px; top: 145px; width: 3px; height: 45px; }
+.volume-down { left: -3px; top: 200px; width: 3px; height: 45px; }
+.power-btn { right: -3px; top: 140px; width: 3px; height: 60px; }
+.camera-control { right: -3px; top: 230px; width: 3px; height: 40px; border-radius: 6px; background-color: #2c2c2e; }
+
+
+
+
+        /* Cột chứa nội dung xám bên phải */
+        .proj-details-col {
+            width: 62%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Khối xám bo tròn góc */
+        .proj-info-block {
+            width: 100%;
+            background-color: #B0B0B0;
+            border-radius: 35px;
+            padding: 30px 40px;
+            position: relative;
+        }
+
+        /* Thẻ tag nhỏ bo góc màu xám đậm đè lên viền */
+        .proj-block-tag {
+            position: absolute;
+            top: -18px;
+            left: 35px;
+            background-color: #616161;
+            color: #FFFFFF;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .proj-block-body {
+            color: #4A1521;
+            font-size: clamp(1rem, 1.4vw, 1.35rem);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* Footer chứa các thẻ kỹ năng */
+        .proj-skills-footer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 25px;
+            margin-left: 100px !important;
+            padding: 0 10px;
+        }
+
+        .skills-footer-label {
+            font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+            font-weight: 700;
+            color: #531D27;
+            white-space: nowrap;
+        }
+
+        .skills-footer-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Các ô hình con nhộng bo tròn màu xám */
+        .proj-skill-tag {
+            background-color: #B0B0B0;
+            color: #4A1521;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+            text-align: center;
+        }
+
+        
+        /* ==========================================
+   GOOGLE WORKSPACE - CHUẨN PIXEL THEO ẢNH MẪU
+   ========================================== */
+#workspace-section {
+    background-color: #EFEBE7; /* Nền kem toàn bộ */
+    width: 100%;
+    padding: 80px 0 120px 0; /* Tạo khoảng trống phía dưới cho chân máy tính */
+    overflow: hidden;
+}
+
+/* Khung gom tọa độ để xếp chồng các layer */
+.ws-wrapper {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    position: relative; /* Bắt buộc để định vị máy tính */
+    box-sizing: border-box;
+    padding: 0 40px 0 100px !important; /* Lề trái 100px giúp nhích toàn bộ khối sang phải rất cân đối */
+}
+
+
+/* Định dạng Font chữ thô, dày, bo sát góc chuẩn Portfolio */
+.ws-font-style {
+    font-family: 'Arial Black', 'Impact', sans-serif; /* Đổi font dày giống hình */
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.85;
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+/* Khối chữ WORK WITH phía trên nền kem */
+.ws-top-row {
+    padding-bottom: 15px;
+        margin: 0 -8%; /* Khoảng cách trước khi vào thảm đỏ */
+}
+
+.text-dark {
+    color: #4A1521; /* Màu đỏ thẫm/nâu gỗ */
+}
+
+.ws-top-row .space-gap {
+    margin-left: 60px; /* Khoảng cách chữ WORK và WITH */
+}
+
+/* Khung banner đỏ đô chạy ngang */
+/* SỬA LỖI TRÀN VIỀN - BỎ HOÀN TOÀN RÌA MÀU KEM BÊN TRÁI */
+.ws-red-banner {
+    background-color: #531D27;
+    
+    /* TUYỆT CHIÊU TRÀN MÀN HÌNH BẤT CHẤP THẺ CHA */
+    width: 200vw !important;  /* Phóng đại chiều rộng ra gấp đôi màn hình */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) !important; /* Đóng đinh căn đều ra hai mép */
+    
+    padding: 12px 0 16px 0; 
+    display: flex;
+    align-items: center;
+}
+/* Giữ chữ GOOGLE WORKSPACE thẳng hàng lề trái */
+/* ========================================================
+   HIỆN LẠI CHỮ - KHÓA CHẾT TỌA ĐỘ PHẲNG HÀNG KHI ZOOM
+   ======================================================== */
+.ws-banner-content {
+    width: 100%;
+    max-width: 1140px;
+    margin-top: -10px;
+    
+    /* 1. ĐƯA LÕI CHỮ VỀ TRUNG TÂM MÀN HÌNH ĐỂ KHÔNG BỊ BAY MẤT */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    
+    /* 2. DÙNG PIXEL CỐ ĐỊNH: Ép chữ màu kem lùi vào đúng bằng lề chữ WORK WITH */
+    padding-left: -50px !important; 
+    padding-right: 0px;
+    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text-cream {
+    color: #EFEBE7 !important;
+}
+
+/* ==========================================
+   XỬ LÝ MÁY TÍNH IMAC CHỒNG LÊN NỀN
+   ========================================== */
+.ws-imac-holder {
+    position: absolute;
+    right: -50px;
+    top: -20px; /* Đẩy máy tính nhích lên trên để lấn sang phần nền kem */
+    z-index: 20;
+}
+
+.imac-device {
+    width: 420px; /* Kích thước máy tính cân đối theo hình mẫu */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imac-screen {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #1e1e1e;
+    border: 12px solid #3a3a3a; /* Màu viền máy xám mờ */
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Chân đế màu kem cắt hình thang giống hình mẫu */
+.imac-stand {
+    width: 120px;
+    height: 70px;
+    background-color: #E2DDD8;
+    clip-path: polygon(18% 0%, 82% 0%, 100% 100%, 0% 100%);
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+}
+
+/* ĐÃ TẮT HIỆU ỨNG CHẠY - ẢNH ĐỨNG IM CỐ ĐỊNH */
+.marquee-image-track {
+    display: block !important;
+    width: 100% !important; /* Trả về độ rộng 100% vừa khít màn hình */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    /* XÓA HOẶC TẮT DÒNG ANIMATION CŨ */
+    animation: none !important; /* Dòng này sẽ chặn đứng mọi chuyển động */
+}
+
+.marquee-image-track img {
+    width: 100% !important; /* Đảm bảo ảnh đơn phủ kín chiều ngang màn hình máy tính */
+    height: 100% !important;
+    object-fit: cover !important; /* Giúp ảnh tự co giãn đẹp, không bị bóp méo */
+    display: block;
+}
+/* ==========================================
+   SECTION: SAMPLE WORK - PHIÊN BẢN CHÈN ẢNH SƠ ĐỒ
+   ========================================== */
+#sample-work-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Vùng thảm đỏ đô làm nền */
+.campaign-diagram-container {
+    width: 100%;
+    background-color: #531D27; /* Màu đỏ đô chuẩn của bạn */
+    padding: 60px 0; /* Khoảng cách trên dưới cho thoáng ảnh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Khung bọc ảnh giới hạn chiều rộng chuẩn Portfolio */
+.diagram-image-wrapper {
+    width: 100%;
+    max-width: 1140px; /* Khớp lề hoàn hảo với khung máy tính và chữ ở trên */
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/* Định dạng ảnh sơ đồ tự co giãn thông minh, không bao giờ vỡ hay lệch */
+.diagram-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+/* 2. Dải nền kem chữ SAMPLE WORK bên dưới */
+.sample-work-heading-bar {
+    width: 100%;
+    background-color: #EFEBE7; /* Nền kem đồng bộ */
+    text-align: center;
+    padding: 45px 0;
+    box-sizing: border-box;
+}
+
+/* Tiêu đề SAMPLE WORK thô dày bặm trợn chuẩn ảnh */
+.sample-work-title {
+   font-family: 'Anton', sans-serif;
+    font-size: clamp(5rem, 15vw, 14rem); /* Điều chỉnh lại size để vừa vặn trong khung */
+    line-height: 0.9;
+    color: #531D27; /* Đổi thành màu kem */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+}
+
+
+
+#image-gallery-marquee {
+    width: 100%;
+    background-color: #EFEBE7; 
+    padding: 30px 0 60px 0; 
+    overflow: hidden; 
+    position: relative;
+}
+
+/* Khung chứa ảnh chạy liên tục */
+.gallery-marquee-track {
+    display: flex;
+    width: max-content; /* Tự co giãn theo số lượng ảnh đã nhân bản */
+    animation: permanentScroll 25s linear infinite;
+    gap: 20px;
+}
+
+@keyframes permanentScroll {
+    0% { transform: translateX(0); }
+    100% { 
+        /* Tịnh tiến đúng 1 phần nội dung gốc */
+        transform: translateX(calc(-25%)); 
+    }
+}
+
+/* Từng khung ảnh 16:9 cố định kích thước */
+.gallery-item {
+    width: 480px; 
+    aspect-ratio: 16 / 9; 
+    border-radius: 12px; 
+    border: 2px solid #531D27; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    overflow: hidden; 
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* Định dạng thẻ ảnh bên trong */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* Khi di chuột vào vùng Slide thì DỪNG LẠI hẳn để xem */
+#image-gallery-marquee:hover .gallery-marquee-track {
+    animation-play-state: paused !important;
+}
+
+/* ==========================================
+   THUẬT TOÁN KEYFRAME MỚI: VÔ TẬN TUYỆT ĐỐI KHÔNG KHỰNG
+   ========================================== */
+@keyframes permanentScroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        /* Vì bạn có 3 bộ ảnh (Gốc + 2 Nhân bản), tịnh tiến đúng -33.3333% tổng chiều dài 
+           sẽ giúp khớp lệnh nối đuôi hoàn hảo, bất tử, không bao giờ lộ vết xước */
+        transform: translate3d(-33.3333%, 0, 0); 
+    }
+}
+
+
+
+/* ==========================================
+   SECTION: CONTACT - GIỮ NGUYÊN GỐC, HIỆU ỨNG ĐỘC ĐÁO
+   ========================================== */
+#exact-portfolio-contact {
+    width: 100%;
+    background-color: #531D27; /* Màu đỏ đô chuẩn xác của bạn */
+    padding: 80px 0 100px 0;
+    box-sizing: border-box;
+}
+
+.exact-contact-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto !important;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   KHỐI TIÊU ĐỀ TRÊN (Y HỆT HÌNH MẪU)
+   ========================================== */
+.exact-contact-top {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* CONTAINER CHỨA CHỮ VIẾT TAY */
+.exact-lets-work {
+    font-family: 'Playfair Display', serif;
+    color: #EFEBE7;
+    font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+    font-style: italic;
+    font-weight: 500;
+    margin: 0 0 15px 0;
+    letter-spacing: 1px;
+    
+    /* Căn giữa dòng chữ viết tay */
+    display: flex;
+    justify-content: center;
+}
+
+/* HIỆU ỨNG TỰ ĐỘNG VIẾT CHỮ VÀ LẶP LẠI VÔ HẠN */
+.typing-text {
+    display: inline-block;
+    white-space: nowrap;    /* Giữ chữ trên một dòng, không cho xuống hàng */
+    overflow: hidden;       /* Ẩn các ký tự chưa được viết ra */
+    border-right: 3px solid rgba(239, 235, 231, 0.75); /* Tạo vạch nhấp nháy của con trỏ chuột */
+    
+    /* Tính toán chiều rộng vừa khít với chữ */
+    width: 0;
+    
+    /* 
+       Gọi đồng thời 2 chuyển động: 
+       - typing: viết chữ ra rồi xóa đi (chạy trong 6 giây, lặp vô hạn)
+       - blink: con trỏ nhấp nháy ở cuối chữ
+       * Note: 'steps(19)' tương ứng với đúng 19 ký tự của chuỗi "Let's work together"
+    */
+    animation: typing 6s steps(19) infinite,
+               blink 0.5s step-end infinite alternate;
+}
+
+/* THUẬT TOÁN ĐIỀU KHIỂN NÉT BÚT VIẾT CHỮ */
+@keyframes typing {
+    0% { width: 0; }                 /* Ban đầu chưa có chữ */
+    40%, 60% { width: 100%; }        /* Viết xong chữ ở mốc 40% và giữ nguyên cho người ta đọc đến mốc 60% */
+    100% { width: 0; }               /* Từ 60% đến 100% tự động xóa chữ lùi về 0 để lặp lại vòng mới */
+}
+
+/* THUẬT TOÁN NHẤP NHÁY CON TRỎ BÚT KHÔNG ĐƯỢC THÔ */
+@keyframes blink {
+    50% { border-color: transparent; } /* Giúp con trỏ chớp tắt ở cuối chữ nhìn cực kỳ tự nhiên */
+}
+.exact-contact-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(5rem, 15vw, 14rem); /* Điều chỉnh lại size để vừa vặn trong khung */
+    line-height: 0.9;
+    color: #EFEBE7; /* Đổi thành màu kem */
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    animation: neonFlicker 2s linear infinite;
+}
+
+@keyframes neonFlicker {
+    /* Đèn sáng bình thường, có lớp tỏa quang (Glow) dưới nền */
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 4px #EFEBE7,
+            0 0 10px #EFEBE7,
+            0 0 20px rgba(239, 235, 231, 0.6),
+            0 0 40px rgba(239, 235, 231, 0.4),
+            0 0 60px rgba(239, 235, 231, 0.2);
+        opacity: 1;
+    }
+    
+    /* Đèn đột ngột chớp tắt, sụt áp trong vài mili giây (giảm độ sáng và mờ đi) */
+    20%, 24%, 55% {
+        text-shadow: 
+            0 0 2px rgba(239, 235, 231, 0.3);
+        opacity: 0.7; /* Hơi mờ xuống như đèn bị lỏng nguồn */
+    }
+    
+    /* Một cú chớp tắt cực nhanh gần như tắt hẳn rồi bật lại ngay */
+    56% {
+        text-shadow: none;
+        opacity: 0.3;
+    }
+}
+.exact-name-underline {
+    display: inline-block;
+    border-top: 2.5px solid #EFEBE7; /* Đường kẻ ngang thanh mảnh của bạn */
+    padding-top: 10px;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif;
+    color: #EFEBE7;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    letter-spacing: 0.5px;
+}
+
+
+.exact-name-underline .ex-normal {
+    font-weight: 700;
+    gap: 4;
+    font-size: 50px;
+}
+
+/* ==========================================
+   BỐ CỤC 2 CỘT THÔNG TIN LIÊN HỆ
+   ========================================== */
+.exact-contact-bottom-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Tỉ lệ chia cột vừa khít ảnh mẫu */
+    gap: 30px 80px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.exact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Từng hàng thông tin */
+.exact-item {
+display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    
+    /* Giải pháp cốt lõi: */
+    width: max-content;
+    min-width: 320px; /* Đặt chiều rộng tối thiểu để khung tự động dài ra sang hai bên */
+    padding: 12px 30px 12px 15px; /* Tăng padding bên phải lên 30px để tia sáng có đất diễn rộng rãi */
+    
+    /* Đổi sang bo tròn hẳn (Capsule style) cho hợp với icon tròn */
+    border-radius: 30px; 
+    
+    position: relative;
+    overflow: hidden; 
+    background-color: transparent;
+    border: none;
+    /* Chuyển động mượt */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.2, 1);
+}
+.exact-item.no-link {
+    cursor: default;
+}
+
+/* Định dạng Icon chuẩn ảnh mẫu */
+.exact-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #EFEBE7; /* Nền trắng kem nguyên bản */
+    color: #531D27; /* Ruột đỏ đô */
+    border-radius: 50%; /* Tròn trịa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.2, 1), 
+                background-color 0.4s ease, 
+                box-shadow 0.4s ease,
+                color 0.4s ease;
+                
+    /* Tạo hiệu ứng tự động lắc nhẹ chu kỳ 3 giây để thu hút sự chú ý */
+    animation: iconAttention 3s ease-in-out infinite;
+}
+
+.exact-col .exact-item:nth-child(2) .exact-icon { animation-delay: 0.4s; }
+.exact-col .exact-item:nth-child(3) .exact-icon { animation-delay: 0.8s; }
+/* Định dạng hình khối riêng cho Facebook & LinkedIn giống hệt ảnh mẫu */
+.fb-style {
+    border-radius: 50%;
+}
+.li-style {
+    border-radius: 6px; /* LinkedIn hình vuông bo nhẹ góc */
+}
+.exact-item:not(.no-link):hover .exact-icon {
+    background-color: #FFFFFF; /* Trắng tinh khôi */
+    color: #E63946;            /* Ruột icon đổi sang màu đỏ tươi rực sáng rực rỡ */
+    transform: scale(1.15) rotate(12deg); /* Phóng to thêm 15% và xoay cá tính */
+    
+    /* Đổ bóng neon loe rộng mạnh mẽ, bao bọc lấy icon chống chìm tuyệt đối */
+    box-shadow: 0 0 20px #FFFFFF, 
+                0 0 40px rgba(255, 255, 255, 0.6), 
+                0 10px 25px rgba(0, 0, 0, 0.3);
+    
+    animation-play-state: paused; /* Tạm dừng lắc tự động khi đang hover */
+}
+
+/* Chữ đi kèm bừng sáng trắng theo */
+.exact-item:not(.no-link):hover .exact-text {
+    color: #FFFFFF;
+    text-shadow: 0 0 10px #FFFFFF, 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   ANIMATION TỰ ĐỘNG NHÚN NHẢY CỦA ICON (IDLE EFFECTS)
+   ========================================== */
+@keyframes iconAttention {
+    0%, 85%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    90% {
+        transform: scale(1.1) translateY(-3px); /* Nhún nhẹ lên trên */
+    }
+    95% {
+        transform: scale(1.2) rotate(-5deg);    /* Nghiêng nhẹ trái */
+    }
+}
+/* Định dạng Text thông tin */
+.exact-text {
+    font-family: 'Arial', sans-serif;
+    color: #EFEBE7;
+    font-size: clamp(2rem, 2.2vw, 1.45rem);
+    font-weight: 500;
+    position: relative;
+}
+
+/* ==========================================
+   HIỆU ỨNG TƯƠNG TÁC ĐỘC ĐÁO ĐƯỢC CÀI CẮM
+   ========================================== */
+
+/* 1. Tạo một tia sáng ngầm ẩn danh chạy qua chữ khi hover */
+.exact-item:not(.no-link)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 130%;
+    height: 130%;
+    border-radius: 12px;
+    background: linear-gradient(to right, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.25) 50%, 
+    rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: none;
+}
+
+/* Khi rê chuột vào dòng liên hệ: */
+.exact-item:not(.no-link):hover {
+    transform: translateX(6px); /* Toàn bộ cụm nhích nhẹ sang phải */
+}
+
+/* Tia sáng quét qua cực kỳ sang xịn mịn */
+.exact-item:not(.no-link):hover::before {
+    left: 150%;
+    transition: left 0.7s ease-in-out;
+}
+
+/* Icon tự động rung lắc/nhún nhẹ tạo sự tương tác sinh động */
+.exact-item:not(.no-link):hover .exact-icon {
+    transform: scale(1.1) rotate(8deg);
+    background-color: #FFF; /* Sáng rực rỡ hơn */
+    color: #4A1521;
+}
+
+/* Chữ đổi sang màu trắng tinh rực rỡ */
+.exact-item:not(.no-link):hover .exact-text {
+    color: #FFF;
+    transition: color 0.2s ease;
+}
+
+/* ==========================================
+   RESPONSIVE CHO MOBILE (ĐIỆN THOẠI)
+   ========================================== */
+
+/* ==========================================
+   SECTION: LIST ẢNH LỚN HOVER PHÓNG TO & ĐỔ BÓNG
+   ========================================== */
+#portfolio-large-gallery {
+    width: 100%;
+    background-color: #EFEBE7; /* Giữ nền kem đồng bộ toàn trang */
+    padding: 30px 0 100px 0;
+    box-sizing: border-box;
+}
+
+/* Khung bọc giới hạn chiều rộng chuẩn với các khối trên */
+.gallery-large-wrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Khoảng cách giữa các hàng ảnh */
+}
+
+/* Từng khối bao gồm cả ảnh và dòng mô tả */
+.gallery-large-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Khung đóng viền và đổ bóng cho ảnh */
+/* KHUNG ẢNH ĐƯỢC CẤP THÊM TÍNH NĂNG SIÊU MƯỢT */
+.gallery-large-item .image-box {
+    width: 100%;
+    aspect-ratio: 100px;
+    border: 3.5px solid #531D27;
+    border-radius: 40px;
+    overflow: hidden; 
+    background-color: #1e1e1e;
+    box-shadow: 0 20px 45px rgba(83, 29, 39, 0.18), 0 8px 20px rgba(0, 0, 0, 0.1);
+    
+    /* 1. THAY ĐỔI ĐỘ MƯỢT: Dùng thời gian 0.6s kết hợp cubic-bezier tạo độ hãm phanh cực êm */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.2, 1), 
+                box-shadow 0.6s cubic-bezier(0.25, 1, 0.2, 1);
+    
+    /* 2. BẬT TĂNG TỐC PHẦN CỨNG: Ép card màn hình xử lý trước, chống giật tuyệt đối khi zoom */
+    will-change: transform, box-shadow;
+}
+
+/* THẺ ẢNH BÊN TRONG CŨNG PHẢI ĐỒNG BỘ ĐỘ MƯỢT */
+.gallery-large-item .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    
+    /* Thay đổi độ mượt cho ruột ảnh đồng bộ 0.6s với khung ngoài */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.2, 1);
+    will-change: transform;
+}
+/* ==========================================
+   HIỆU ỨNG TƯƠNG TÁC HOVER (CẢ KHUNG PHÓNG TO)
+   ========================================== */
+.gallery-large-item:hover .image-box {
+    /* 1. Phóng to CẢ KHUNG lên 1.03 lần (3%) và nhích nhẹ lên trên */
+    transform: translateY(-5px) scale(1.03);
+    
+    /* 2. Đổ bóng rộng và sâu hơn khi khung lao ra ngoài */
+    box-shadow: 0 30px 60px rgba(83, 29, 39, 0.28), 0 12px 25px rgba(0, 0, 0, 0.15);
+    
+    /* 3. Giữ màu viền luôn sắc nét khi phóng to */
+    border-color: #531D27; 
+}
+
+/* 
+   Mẹo nhỏ: Ruột ảnh bên trong không cần tự scale nữa vì cả khung đã to ra rồi.
+   Nếu bạn muốn hiệu ứng "phóng to kép" (khung to ra, ruột ảnh bên trong còn to hơn nữa), 
+   thì cứ giữ nguyên dòng dưới này. Còn nếu muốn ảnh đứng im cùng khung thì xóa đoạn dưới này đi nhé!
+*/
+.gallery-large-item:hover .image-box img {
+    transform: scale(1.02); /* Ruột ảnh nhích nhẹ thêm 2% tạo chiều sâu */
+}
+/* Dòng mô tả (Description) nằm ngay phía dưới */
+.image-description {
+    font-family: 'Georgia', serif; /* Font chữ có chân đồng bộ với sơ đồ */
+    color: #531D27; /* Màu đỏ đô sang trọng */
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-style: italic;
+    margin: 20px 0 0 10px; /* Tạo khoảng cách vừa phải bên dưới khung ảnh */
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+}
+
+/* Responsive tối ưu hiển thị trên Điện thoại */
+ /* ==========================================
+           RESPONSIVE: TABLET (max-width: 992px)
+           ========================================== */
+        @media (max-width: 992px) {
+            .proj-main-content  { flex-direction: column; gap: 40px; }
+            .proj-mockup-col,
+            .proj-details-col   { width: 100%; }
+
+            /* Post giữ đúng tỉ lệ gốc, căn giữa, lấn ra 2 bên đều nhau */
+            .instagram-post-overflow {
+                width: 300px; height: 380px;
+                left: 50%; top: 8%;
+                transform: translateX(-50%);
+                animation: vibrateNotification 0.6s ease-in-out infinite;
+                animation-delay: 2s;
+            }
+            .instagram-post-overflow:hover {
+                transform: translateX(-50%) scale(1.05) rotate(0deg);
+            }
+
+            #workspace-section  { padding: 40px 0; }
+            .ws-imac-holder     { position: relative; right: auto; top: auto; margin-top: 40px; display: flex; justify-content: center; width: 100%; }
+            .ws-top-row         { text-align: center; margin: 0; }
+            .ws-top-row .space-gap { margin-left: 25px; }
+            .ws-banner-content  { text-align: center; padding-left: 40px; }
+            .imac-device        { width: 340px; }
+
+            .exp-skills-badges  { flex-wrap: wrap; justify-content: center; }
+            .skill-badge        { flex: none; width: calc(50% - 12px); }
+        }
+
+        /* ==========================================
+           RESPONSIVE: MOBILE (max-width: 768px)
+           ========================================== */
+        @media (max-width: 768px) {
+            section     { height: auto; min-height: auto; }
+
+            .container  {
+                padding: 20px 20px;
+                height: auto; min-height: auto;
+                justify-content: flex-start;
+                gap: 0;
+            }
+
+            /* --- HERO ---
+               Dùng layout chồng (stack): text phía trên, ảnh dính liền bên dưới
+            */
+            #hero-page .container {
+                padding-bottom: 0;
+            }
+
+            #hero-page .bg-text-container {
+                position: relative;
+                top: auto; left: auto;
+                transform: none;
+                width: 100%;
+                padding-bottom: 15px;
+            }
+
+            .main-title { font-size: clamp(10rem, 20vw, 10rem); }
+
+            .info-card-box {
+                margin-left: 0;
+                width: 100%;
+                padding: 14px 18px;
+                border-radius: 16px;
+            }
+
+            /* Ảnh dính ngay bên dưới card, không có gap thừa */
+            .image-container {
+                position: relative;
+                width: 100%;
+                height: 290px;
+                margin-top: -60px;          /* Không thêm margin */
+                overflow: hidden;
+            }
+
+            .image-container img {
+                height: 120%;           /* Cắt nhẹ trên/dưới cho đẹp */
+                width: auto;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                object-fit: cover;
+                animation: none;        /* Tắt float breath trên mobile để tránh jump */
+            }
+
+            /* --- INTRO --- */
+            .intro-text-box {
+                max-width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                padding-left: 0;
+            }
+
+            .intro-column { width: 100%; }
+            .intro-description { padding-left: 0; font-size: 1rem; }
+            .intro-images-container { max-width: 100%; padding-left: 0; }
+
+            .section-title { margin-left: 0 !important; font-size: clamp(2.5rem, 12vw, 5rem); letter-spacing: -1px; }
+
+            /* --- EXPERIENCE --- */
+            .exp-section-title { font-size: clamp(2.5rem, 12vw, 5rem); margin-top: 20px; }
+
+            .timeline-wrapper::before { left: 20px; }
+
+            .timeline-item { justify-content: flex-start !important; }
+
+            .timeline-dot { left: 20px; top: 0px; }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+                flex-direction: column !important;
+                gap: 15px;
+                animation: none;
+            }
+
+            .exp-image { width: 100%; height: 180px; }
+
+            .exp-skills-badges { flex-wrap: wrap; gap: 10px; padding: 0; }
+            .skill-badge { flex: none; width: calc(50% - 10px); padding: 10px 14px; font-size: 0.8rem; }
+
+            /* --- PROJECT --- */
+            .proj-section-title { font-size: clamp(3rem, 14vw, 6rem); padding: 20px; }
+
+            .proj-header-info {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .proj-info-block { padding: 30px 20px; border-radius: 24px; }
+
+            .proj-skills-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-left: 0 !important;
+                padding: 0;
+            }
+
+            .skills-footer-badges { gap: 10px; width: 100%; }
+            .proj-skill-tag { flex: 1; min-width: calc(50% - 10px); padding: 10px 15px; }
+
+      .ws-wrapper { 
+    padding: 0 15px; /* Giảm padding trên điện thoại để tối ưu không gian */
+}
+
+.ws-font-style { 
+    font-size: clamp(1.5rem, 8vw, 3rem); /* Nhỏ lại một chút cho vừa màn hình nhỏ */
+    letter-spacing: -0.5px; 
+
+}
+
+.ws-top-row { 
+    margin-left: -60px ; 
+    display: flex;
+    flex-direction: column; /* Xếp chồng nội dung trên điện thoại */
+    align-items: center;
+}
+
+.ws-banner-content { 
+    margin-left: -30px !important ; 
+    padding-left: 0; /* Bỏ giá trị âm gây lệch */
+    text-align: center;
+}
+
+.imac-device { 
+    width: 90%;      /* Cho phép thiết bị co giãn theo màn hình */
+    max-width: 280px; /* Không vượt quá kích thước cũ */
+    margin-top: 20px;
+}
+
+/* --- MEDIA QUERY CHO ĐIỆN THOẠI (Dưới 768px) --- */
+@media (max-width: 768px) {
+    .ws-wrapper {
+        padding: 0 10px;
+    }
+    
+    .ws-banner-content {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .imac-device {
+        width: 85%; /* Thu nhỏ hơn để không bị tràn viền */
+        margin: 15px auto;
+    }
+}
+            /* --- SAMPLE WORK --- */
+            .campaign-diagram-container { padding: 30px 0; }
+            .diagram-image-wrapper { padding: 0 20px; }
+            .sample-work-heading-bar { padding: 20px 0; }
+            .sample-work-title { font-size: clamp(2.5rem, 12vw, 5rem); padding: 20px; letter-spacing: 0; }
+
+            /* --- GALLERIES --- */
+            .gallery-item { width: 280px; }
+            .gallery-marquee-track { gap: 15px; }
+            .gallery-large-wrapper { padding: 0 15px; gap: 40px; }
+            .gallery-large-item .image-box { border-width: 2px; border-radius: 16px; }
+
+            /* --- CONTACT --- */
+            .exact-contact-wrapper { padding: 0 20px; }
+            .exact-contact-title { font-size: clamp(2.5rem, 12vw, 5rem); letter-spacing: 2px; }
+            .exact-lets-work { font-size: clamp(1.8rem, 6vw, 3rem); }
+            .exact-contact-bottom-grid { grid-template-columns: 1fr; gap: 15px; }
+            .exact-item { width: 100%; min-width: unset; }
+        }
+
+        /* ==========================================
+           RESPONSIVE: SMALL PHONE (max-width: 480px)
+           ========================================== */
+        @media (max-width: 480px) {
+            .main-title        { font-size: clamp(3rem, 13vw, 5rem); }
+            .exp-section-title { font-size: clamp(2.2rem, 11vw, 4rem); }
+            .section-title     { font-size: clamp(2rem, 11vw, 4rem); }
+
+            /* iPhone nhỏ lại, post vẫn căn giữa và lấn ra ngoài */
+            .iphone-16-mockup  { width: 210px; height: 440px; }
+            .instagram-post-overflow {
+                width: 260px; height: 320px;
+                left: auto; top: 10%;
+                transform: translateX(-50%);
+            }
+            .instagram-post-overflow:hover {
+                transform: translateX(-50%) scale(1.05) rotate(0deg);
+            }
+
+            .skill-badge     { width: 100%; }
+            .proj-skill-tag  { min-width: 100%; }
+            .exact-text      { font-size: 0.95rem; }
+            .exact-icon      { width: 40px; height: 40px; font-size: 1.3rem; }
+        }
+</style>
+</head>
+<body>
+
+    <section id="hero-page">
+        <div class="container">
+            <div class="bg-text-container">
+                <h1 class="main-title">PORTFOLIO</h1> 
+                
+                <div class="info-card-box">
+                    <div class="author-name main-name">NGUYỄN PHẠM THÀNH DUY</div>
+                    <div class="author-name sub-text">ELECTRONIC COMMERCE </div>
+                    <div class="author-name sub-text">Current GPA: 3.60 - Target GPA: 3.60</div>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <img src="port.png" alt="Ảnh chân dung">
+            </div>
+        </div>
+    </section>
+
+    <section id="intro-page">
+        <div class="container">
+            <div class="intro-text-box">
+                <div class="intro-column">
+                    <p class="intro-description">
+                        Third-year student majoring in E-commerce with a proactive, responsible, and eager-to-learn attitude.
+                        Quick to adapt to new working environments and passionate about Digital and E-commerce fields.
+
+                    </p>
+                </div>
+                
+                <div class="intro-column">
+                    <p class="intro-description"> 
+                        Seeking internship opportunities to gain practical experience, enhance professional skills and working mindset, and contribute value in a professional environment.
+                    </p>
+                </div>
+            </div>
+
+            <div class="intro-images-container">
+                <div class="intro-img-box">
+                    <img src="intro2.jpg" alt="Dự án hoặc hoạt động nổi bật">
+                </div>
+            </div>
+
+            <div class="bottom-title-box">
+                <h2 class="section-title">INTRODUCTION</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience-page">
+        <div class="container exp-container">
+            <div class="top-title-box">
+                <h2 class="exp-section-title">EXPERIENCE</h2>
+            </div>
+
+            <div class="timeline-wrapper">
+                
+                <div class="timeline-item right-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="exp-text">
+                            <h3 class="exp-role">Sales Associate</h3>
+                            <h4 class="exp-company">FAPAS - Men's Fashion Store <p>(12/2024 - 06/2025)</p></h4>
+                            <ul class="exp-details">
+                                <li>Sales Operations</li>
+                                <li>Cashier Operations by SAPO</li>
+                                <li>Inventory Control</li>
+                                <li>Transfer Order Processing</li>
+                                <li>Product Handling</li>
+                                <li>Visual Merchandising (VM)</li>
+                                <li>Brand Standard Compliance</li>
+                            </ul>
+                        </div>
+                        <div class="exp-image">
+                            <img src="fapas.jpg" alt="Fapas">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="exp-text">
+                            <h3 class="exp-role">Enrollment Consultant</h3>
+                            <h4 class="exp-company">Moonlight Center <p>(07/2025 - 12/2025)</p></h4>
+                            <ul class="exp-details">
+                                <li>Enrollment Consulting</li>
+                                <li>Student Enrollment Support</li>
+                                <li>Parent & Student Support</li>
+                                <li>Admission Procedures</li>
+                                <li>Tuition Fee Management</li>
+                                <li>Cashier Operations</li>
+                            </ul>
+                        </div>
+                        <div class="exp-image">
+                            <img src="image.png" alt="Moonlight Center">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item right-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="exp-text">
+                            <h3 class="exp-role">Art Teaching Assistant</h3>
+                            <h4 class="exp-company">Tân Văn Education System <p>(12/2025 – 05/2025)</p></h4>
+                            <ul class="exp-details">
+                                <li>Classroom Preparation</li>
+                                <li>Art Teaching Assistance</li>
+                                <li>Creative Activities Guidance</li>
+                                <li>Student Engagement</li>
+                                <li>Safety Monitoring</li>
+                                <li>Art & Craft Support</li>
+                            </ul>
+                        </div>
+                        <div class="exp-image">
+                            <img src="tanvan.jpg" alt="Tân Văn">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="exp-text">
+                            <h3 class="exp-role">Sales & Operations Staff</h3>
+                            <h4 class="exp-company">Jump Arena – Trampoline Park <p>(12/2025 – 05/2025)</p></h4>
+                            <ul class="exp-details">
+                                <li>Customer Service</li>
+                                <li>Cashier Operations & POS</li>
+                                <li>F&B Preparation</li>
+                                <li>Operations Support</li>
+                                <li>Safety Compliance</li>
+                                <li>Sanitation Standards</li>
+                            </ul>
+                        </div>
+                        <div class="exp-image">
+                            <img src="jump.jpg" alt="Jump Arena">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="exp-skills-badges">
+                <div class="skill-badge">Customer Service<br>3+ roles</div>
+                <div class="skill-badge">Cashier Operations<br>3+ roles</div>
+                <div class="skill-badge">Operations Support<br>2+ roles</div>
+                <div class="skill-badge">Inventory Control<br>2+ roles</div>
+                <div class="skill-badge">Safety Compliance<br>2+ roles</div>
+            </div>
+        </div>
+    </section>
+<section id="project-page">
+        <div class="container proj-container">
+            <div class="proj-banner-full">
+    <h2 class="proj-section-title">PROJECT</h2>
+</div>
+
+            <div class="proj-header-info">
+                <div class="proj-brand-meta">
+                    <span class="proj-brand-label">Brand: vovanwus</span>
+                    <span class="proj-brand-sub">INSTAGRAM CHANNEL | SOCK RETAIL</span>
+                </div>
+                <div class="proj-role-meta">
+                    My Role: Team Coordinator
+                </div>
+            </div>
+
+            <div class="proj-main-content">
+                
+                <div class="proj-mockup-col">
+    <div class="iphone-16-mockup">
+        <div class="dynamic-island"></div>
+        
+        <div class="iphone-screen"></div>
+
+        <div class="instagram-post-overflow">
+            <img src="vovan.jpg" alt="Vớ Vẩn Logo"> </div>
+        
+        <div class="iphone-btn action-btn"></div>
+        <div class="iphone-btn volume-up"></div>
+        <div class="iphone-btn volume-down"></div>
+        <div class="iphone-btn power-btn"></div>
+        <div class="iphone-btn camera-control"></div>
+    </div>
+</div>
+                <div class="proj-details-col">
+                    
+                    <div class="proj-info-block">
+                        <div class="proj-block-tag">The goal</div>
+                        <div class="proj-block-body">
+                            VOVAN is a mini project founded with university peers, focusing on sock retail and customer engagement.
+                        </div>
+                    </div>
+
+                    <div class="proj-info-block">
+                        <div class="proj-block-tag">My duties</div>
+                        <div class="proj-block-body">
+                            As the Team Coordinator, I coordinated team operations, supported marketing and sales activities.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="proj-skills-footer">
+                <span class="skills-footer-label">Skill learned:</span>
+                <div class="skills-footer-badges">
+                    <div class="proj-skill-tag">Leadership</div>
+                    <div class="proj-skill-tag">Organization</div>
+                    <div class="proj-skill-tag">Planning</div>
+                    <div class="proj-skill-tag">Management</div>
+                    <div class="proj-skill-tag">Teamwork & Collaboration</div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+<!-- SECTION: GOOGLE WORKSPACE SÁT GỐC -->
+<section id="workspace-section">
+    <div class="ws-wrapper">
+        
+        <!-- Hàng chữ WORK WITH (Nền kem) -->
+        <div class="ws-top-row">
+            <h2 class="ws-font-style text-dark">WORK<span class="space-gap">WITH</span></h2>
+        </div>
+
+        <!-- Khối Banner Đỏ Đô (Chứa chữ GOOGLE WORKSPACE) -->
+        <div class="ws-red-banner">
+            <div class="ws-banner-content">
+                <h2 class="ws-font-style text-cream">GOOGLE</h2>
+                <h2 class="ws-font-style text-cream">WORKSPACE</h2>
+            </div>
+        </div>
+
+        <!-- Khối máy tính iMac nằm ĐÈ LÊN cả nền kem và nền đỏ -->
+        <div class="ws-imac-holder">
+            <div class="imac-device">
+                <div class="imac-screen">
+    <!-- CHỈ GIỮ LẠI ĐÚNG 1 THẺ IMG NÀY -->
+    <div class="marquee-image-track">
+        <img src="drive1.jpg" alt="Google Drive Mockup"> 
+    </div>
+</div>
+                <div class="imac-stand"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- SECTION: SLIDE 4 ẢNH 16:9 CHẠY NGANG -->
+<!-- SECTION: SLIDE 4 ẢNH 16:9 CHẠY NGANG -->
+<!-- SECTION: SLIDE 4 ẢNH 16:9 CHẠY NGANG -->
+<section id="image-gallery-marquee">
+    <div class="gallery-marquee-track" id="marquee-track">
+        <div class="gallery-item"><img src="bc.jpg" alt="1"></div>
+        <div class="gallery-item"><img src="bc1.jpg" alt="2"></div>
+        <div class="gallery-item"><img src="bc2.jpg" alt="3"></div>
+        <div class="gallery-item"><img src="bc3.jpg" alt="4"></div>
+    </div>
+</section>
+
+<!-- SECTION: SAMPLE WORK & CAMPAIGN FLOW (DÁN ẢNH NỀN ĐỎ) -->
+<section id="sample-work-section">
+    <!-- Phần sơ đồ chiến dịch dạng ảnh sạch sẽ -->
+    <div class="campaign-diagram-container">
+        <div class="diagram-image-wrapper">
+            <!-- BẠN THAY TÊN FILE ẢNH SƠ ĐỒ CỦA BẠN VÀO ĐÂY -->
+            <img src="flow.jpg" alt="Campaign Diagram Flow" class="diagram-main-img">
+        </div>
+    </div>
+
+    
+    <!-- Phần tiêu đề lớn SAMPLE WORK nền kem -->
+    <div class="sample-work-heading-bar">
+        <h1 class="sample-work-title">SAMPLE WORK</h1>
+    </div>
+</section>
+
+<!-- SECTION: LIST ẢNH LỚN HOVER PHÓNG TO + DESCRIPTION -->
+<section id="portfolio-large-gallery">
+    <div class="gallery-large-wrapper">
+
+        <!-- TẤM ẢNH SỐ 1 -->
+        <div class="gallery-large-item">
+            <div class="image-box">
+                <!-- Thay link ảnh của bạn vào đây -->
+                <img src="mktplan.jpg" alt="Dự án Website Vân Hải Các">
+            </div>
+            <p class="image-description">Marketing Plan June</p>
+        </div>
+
+        <!-- TẤM ẢNH SỐ 2 -->
+        <div class="gallery-large-item">
+            <div class="image-box">
+                <!-- Thay link ảnh của bạn vào đây -->
+                <img src="KeywordSEO.jpg" alt="Phân tích dữ liệu Odoo ERP">
+            </div>
+            <p class="image-description">Google Ads</p>
+        </div>
+
+        <!-- TẤM ẢNH SỐ 3 -->
+        <div class="gallery-large-item">
+            <div class="image-box">
+                <!-- Thay link ảnh của bạn vào đây -->
+                <img src="SEO.jpg" alt="Chiến dịch E-commerce">
+            </div>
+            <p class="image-description">Wordpress - SEO</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="exact-portfolio-contact">
+    <div class="exact-contact-wrapper">
+        
+        <!-- Khối trên: Let's work together + CONTACT -->
+        <div class="exact-contact-top">
+            <h3 class="exact-lets-work">
+    <span class="typing-text">Let's work together</span>
+</h3>
+            <h2 class="exact-contact-title">CONTACT</h2>
+            <div class="exact-name-underline">
+                <span class="ex-normal"></span>
+            </div>
+        </div>
+
+        <!-- Khối dưới: Hệ thống liên hệ 2 cột giống y như ảnh -->
+        <div class="exact-contact-bottom-grid">
+            
+            <!-- CỘT TRÁI -->
+            <div class="exact-col">
+                <a href="tel:0813137606" class="exact-item">
+                    <div class="exact-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <span class="exact-text">0813 137 606</span>
+                </a>
+                
+                <a href="mailto:thanhduywork06@gmail.com" class="exact-item">
+                    <div class="exact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <span class="exact-text">thanhduywork06@gmail.com</span>
+                </a>
+                
+                <div class="exact-item no-link">
+                    <div class="exact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <span class="exact-text">Nguyễn Oanh, Phường Gò Vấp, TPHCM</span>
+                </div>
+            </div>
+
+            <!-- CỘT PHẢI -->
+            <div class="exact-col">
+                <a href="https://www.facebook.com/thanh.duy.72860" target="_blank" class="exact-item">
+                    <div class="exact-icon fb-style"><i class="fa-brands fa-facebook-f"></i></div>
+                    <span class="exact-text">Thành Duy</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/nguyenduywork06" target="_blank" class="exact-item">
+                    <div class="exact-icon li-style"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <span class="exact-text">Nguyễn Duy</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const timelineItems = document.querySelectorAll(".timeline-item");
+
+        const expObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Thêm class hiển thị khi cấu trúc lọt vào tầm mắt
+                    entry.target.classList.add("active-reveal");
+                }
+            });
+        }, {
+            threshold: 0.15 // Hiện 15% diện tích hộp là kích hoạt mượt mà
+        });
+
+        timelineItems.forEach((item) => expObserver.observe(item));
+    });
+
+</script>
+<script>
+    const track = document.getElementById('marquee-track');
+    const items = track.innerHTML;
+    // Nhân bản thêm 4 lần nữa (tổng 5 bộ) để chắc chắn bao phủ màn hình siêu rộng
+    // Việc này giúp animation 100% không bị lộ vết ngắt
+    track.innerHTML += items + items + items + items;
+</script>
+</html>
